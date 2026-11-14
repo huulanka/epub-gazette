@@ -1,0 +1,339 @@
+{
+  "$defs": {
+    "Almanac": {
+      "additionalProperties": false,
+      "properties": {
+        "heading": {
+          "description": "Heading, e.g. \"Heute vor 137 Jahren\".",
+          "type": "string"
+        },
+        "text": {
+          "description": "One or two sentences.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "heading",
+        "text"
+      ],
+      "type": "object"
+    },
+    "Article": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "description": "Short analysis box (\"Einordnung\") after the body.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dek": {
+          "description": "Sub-headline / standfirst.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "headline": {
+          "type": "string"
+        },
+        "kicker": {
+          "description": "Small label above the headline, e.g. \"Fortsetzung\" or \"Hintergrund\".",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "minutes": {
+          "description": "Estimated reading time in minutes.",
+          "format": "uint32",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "paragraphs": {
+          "description": "Body text, one string per paragraph.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "pull_quote": {
+          "description": "Highlighted quote, placed after the second paragraph.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/$defs/Source"
+          },
+          "type": "array"
+        },
+        "teaser": {
+          "description": "Shorter headline for the front-page index. Defaults to `headline`.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "headline",
+        "paragraphs"
+      ],
+      "type": "object"
+    },
+    "Brief": {
+      "additionalProperties": false,
+      "properties": {
+        "lead": {
+          "description": "Bold lead-in, e.g. \"Bahn\".",
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "lead",
+        "text"
+      ],
+      "type": "object"
+    },
+    "Briefs": {
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/Brief"
+          },
+          "type": "array"
+        },
+        "title": {
+          "default": "Kurz notiert",
+          "type": "string"
+        }
+      },
+      "required": [
+        "items"
+      ],
+      "type": "object"
+    },
+    "Image": {
+      "additionalProperties": false,
+      "description": "A raster image, transported inline.",
+      "properties": {
+        "caption": {
+          "description": "Caption shown under the image.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "credit": {
+          "description": "Attribution, e.g. \"Wikimedia Commons, gemeinfrei\".",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "data": {
+          "description": "Base64-encoded JPEG, PNG, GIF, WebP or TIFF. A `data:` URI prefix is accepted.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "data"
+      ],
+      "type": "object"
+    },
+    "Section": {
+      "additionalProperties": false,
+      "description": "A section (\"Ressort\") such as politics or science.",
+      "properties": {
+        "articles": {
+          "items": {
+            "$ref": "#/$defs/Article"
+          },
+          "type": "array"
+        },
+        "id": {
+          "description": "Stable slug (`[a-z0-9-]`, max. 40 chars), used for file names and links.",
+          "type": "string"
+        },
+        "note": {
+          "description": "Optional note under the section heading.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "title": {
+          "description": "Display title, e.g. \"Politik & Welt\".",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "articles"
+      ],
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "description": "Publication name, e.g. \"tagesschau.de\".",
+          "type": "string"
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "Weather": {
+      "additionalProperties": false,
+      "properties": {
+        "location": {
+          "description": "Place name, e.g. \"Hamburg\".",
+          "type": "string"
+        },
+        "text": {
+          "description": "One or two sentences.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "location",
+        "text"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "https://github.com/huulanka/epub-gazette/schema/issue.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "One edition of a newspaper.",
+  "properties": {
+    "almanac": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Almanac"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Almanac entry (\"on this day\") for the front page."
+    },
+    "briefs": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Briefs"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Short news items, printed after the sections."
+    },
+    "colophon": {
+      "description": "Lines for the colophon (\"Zu dieser Ausgabe\") at the very end.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "date": {
+      "description": "Publication date (ISO 8601, `YYYY-MM-DD`).",
+      "format": "date",
+      "type": "string"
+    },
+    "front_image": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Image"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Illustration for the front page and the cover (e.g. a public-domain engraving)."
+    },
+    "language": {
+      "default": "de",
+      "description": "BCP 47 language tag of the content. Only `de` has localized labels so far.",
+      "type": "string"
+    },
+    "motto": {
+      "description": "Optional motto printed under the masthead.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "number": {
+      "description": "Running issue number, starting at 1.",
+      "format": "uint32",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "sections": {
+      "description": "The sections (\"Ressorts\") in reading order. Each becomes its own chapter.",
+      "items": {
+        "$ref": "#/$defs/Section"
+      },
+      "type": "array"
+    },
+    "theme": {
+      "default": "klassisch-1900",
+      "description": "Theme identifier. See `epub-gazette themes`.",
+      "type": "string"
+    },
+    "title": {
+      "description": "Name of the newspaper, e.g. \"The Ragazzi Observer\".",
+      "type": "string"
+    },
+    "volume": {
+      "description": "Volume (\"Jahrgang\"). Rendered as a Roman numeral by classic themes.",
+      "format": "uint32",
+      "minimum": 0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "weather": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Weather"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Short weather report for the front page."
+    }
+  },
+  "required": [
+    "title",
+    "date",
+    "number",
+    "sections"
+  ],
+  "title": "epub-gazette issue (v1)",
+  "type": "object"
+}

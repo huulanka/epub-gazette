@@ -1,0 +1,25 @@
+{% extends "base.xhtml" %}
+{% block title %}{{ section.title }}{% endblock %}
+{% block body %}
+<section epub:type="chapter">
+<h1 class="ressort">{{ section.title }}</h1>
+{% if section.note %}<p class="note">{{ section.note }}</p>{% endif %}
+{% for a in section.articles %}
+{% if not loop.first %}<p class="orn">* * *</p>{% endif %}
+<div class="article" id="{{ a.anchor }}">
+{% if a.kicker %}<p class="kicker">{{ a.kicker }}</p>{% endif %}
+<h2 class="headline">{{ a.headline }}</h2>
+{% if a.dek %}<p class="dek">{{ a.dek }}</p>{% endif %}
+{% if a.byline %}<p class="byline">{{ a.byline }}</p>{% endif %}
+<p class="first">{% if a.initial %}<span class="dc">{{ a.initial }}</span>{% endif %}{{ a.first_rest }}</p>
+{% for p in a.before_quote %}<p>{{ p }}</p>
+{% endfor %}
+{% if a.pull_quote %}<blockquote class="pull"><p>{{ a.pull_quote }}</p></blockquote>{% endif %}
+{% for p in a.after_quote %}<p{% if loop.first and a.pull_quote %} class="ni"{% endif %}>{{ p }}</p>
+{% endfor %}
+{% if a.context %}<div class="why"><p><span class="label">{{ labels.context }}</span> · {{ a.context }}</p></div>{% endif %}
+{% if a.sources %}<p class="sources">{{ labels.sources }}: {{ a.sources }}</p>{% endif %}
+</div>
+{% endfor %}
+</section>
+{% endblock %}

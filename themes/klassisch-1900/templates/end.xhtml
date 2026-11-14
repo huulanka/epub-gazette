@@ -1,0 +1,18 @@
+{% extends "base.xhtml" %}
+{% block title %}{{ end_title }}{% endblock %}
+{% block body %}
+<section epub:type="backmatter">
+{% if briefs %}
+<h1 class="ressort">{{ briefs.title }}</h1>
+{% for b in briefs.items %}<p class="brief"><span class="label">{{ b.lead }}.</span> {{ b.text }}</p>
+{% endfor %}
+<p class="orn">* * *</p>
+{% endif %}
+<div class="colophon">
+<h2>{{ labels.colophon }}</h2>
+{% for line in paper.colophon %}<p>{{ line }}</p>
+{% endfor %}
+<p>{{ paper.title }} · {% if paper.volume_roman %}{{ labels.volume }} {{ paper.volume_roman }} · {% endif %}{{ labels.number }} {{ paper.number }}</p>
+</div>
+</section>
+{% endblock %}

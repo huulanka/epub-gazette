@@ -1,0 +1,30 @@
+---
+source: tests/render.rs
+expression: "std::str::from_utf8(&files[\"OEBPS/r-politik.xhtml\"]).unwrap()"
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="de" lang="de">
+<head>
+<meta charset="UTF-8"/>
+<title>Politik &amp; Welt</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+</head>
+<body>
+<section epub:type="chapter">
+<h1 class="ressort">Politik &amp; Welt</h1>
+<div class="article" id="politik-1">
+<h2 class="headline">Schulen, Brücken, Schwimmbäder: Der Sanierungsstau wird zum Wahlkampfthema</h2>
+<p class="dek">Städte und Gemeinden fordern einen verlässlichen Investitionsfonds. Bund und Länder schieben sich die Zuständigkeit zu, und die Liste gesperrter Brücken wird länger.</p><p class="byline">3 Min.</p><p class="first"><span class="dc">D</span>ie Zahlen sind seit Jahren bekannt, doch in diesem Herbst bekommen sie eine neue Dringlichkeit. In vielen Städten sind Turnhallen gesperrt, Brücken nur noch einspurig befahrbar, und für die Sanierung von Schulgebäuden fehlen Milliarden. Kommunale Verbände beziffern den Rückstand inzwischen auf eine Summe, die den Jahreshaushalt mancher Bundesländer übersteigt.</p>
+<p>Neu ist der Ton. Bürgermeisterinnen und Landräte aus allen Parteien verlangen einen festen Fonds, aus dem Kommunen über zehn Jahre planbar Geld abrufen können, statt kurzer Förderprogramme mit aufwendigen Anträgen.</p>
+<blockquote class="pull"><p>»Wir brauchen keine Wettbewerbe um Fördertöpfe. Wir brauchen Verlässlichkeit.«</p></blockquote><p class="ni">Im Bund verweist man auf die Länder, die Länder verweisen auf ihre eigenen Schuldenregeln. Ökonominnen und Ökonomen halten beide Argumente für schwach: Wer heute nicht saniert, zahlt später ein Vielfaches, für Neubauten, Umleitungen und Ausweichquartiere.</p>
+<p>Hinzu kommt ein Personalproblem. Selbst wo Geld bereitsteht, fehlen in den Bauämtern Fachleute, die Ausschreibungen vorbereiten und Baustellen begleiten. Mehrere Länder wollen deshalb gemeinsame Planungsgesellschaften gründen, die kleinen Gemeinden diese Arbeit abnehmen.</p>
+<div class="why"><p><span class="label">Einordnung</span> · Das Thema dürfte die kommenden Haushaltsberatungen prägen. Konkrete Beschlüsse sind vor dem Frühjahr nicht zu erwarten.</p></div><p class="sources">Quellen: tagesschau.de, FAZ, Süddeutsche Zeitung, Deutschlandfunk</p></div>
+<p class="orn">* * *</p><div class="article" id="politik-2">
+<h2 class="headline">Brüssel nimmt Online-Marktplätze stärker in die Pflicht</h2>
+<p class="dek">Plattformen sollen künftig mithaften, wenn über sie unsichere Produkte in die EU gelangen.</p><p class="byline">2 Min.</p><p class="first"><span class="dc">M</span>illionen Kleinpakete erreichen die Europäische Union jeden Tag, viele davon direkt von Händlern außerhalb Europas. Prüfstellen finden darin regelmäßig Spielzeug mit Schadstoffen oder Ladegeräte ohne Sicherheitsprüfung. Die EU-Staaten wollen deshalb die Marktplätze selbst verantwortlich machen, nicht nur die oft unerreichbaren Verkäufer.</p>
+<p>Geplant sind schärfere Kontrollpflichten und eine Bearbeitungsgebühr pro Paket. Handelsverbände begrüßen das, Verbraucherschützer warnen vor höheren Preisen, die am Ende bei der Kundschaft landen.</p>
+<div class="why"><p><span class="label">Einordnung</span> · Bis die Regeln greifen, dürften noch rund zwei Jahre vergehen. Das Parlament muss noch zustimmen.</p></div><p class="sources">Quellen: Handelsblatt, The Guardian, DW</p></div>
+</section>
+</body>
+</html>

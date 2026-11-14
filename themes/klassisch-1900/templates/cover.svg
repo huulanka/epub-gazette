@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ w }}" height="{{ h }}" viewBox="0 0 {{ w }} {{ h }}">
+  <rect width="{{ w }}" height="{{ h }}" fill="#f4f3ef"/>
+  {# double rule on top #}
+  <rect x="{{ m }}" y="{{ m }}" width="{{ w - 2 * m }}" height="6" fill="#111111"/>
+  <rect x="{{ m }}" y="{{ m + 12 }}" width="{{ w - 2 * m }}" height="2" fill="#111111"/>
+  <text x="{{ w / 2 }}" y="{{ name.baseline }}" text-anchor="middle" font-family="UnifrakturMaguntia" font-size="{{ name.size }}" fill="#111111">{{ name.text }}</text>
+  <rect x="{{ m }}" y="{{ dateline.rule_top }}" width="{{ w - 2 * m }}" height="2" fill="#111111"/>
+  <text x="{{ w / 2 }}" y="{{ dateline.baseline }}" text-anchor="middle" font-family="Old Standard TT" font-size="{{ dateline.size }}" letter-spacing="3" fill="#111111">{{ dateline.text }}</text>
+  <rect x="{{ m }}" y="{{ dateline.rule_bottom }}" width="{{ w - 2 * m }}" height="6" fill="#111111"/>
+  <rect x="{{ m }}" y="{{ dateline.rule_bottom + 12 }}" width="{{ w - 2 * m }}" height="2" fill="#111111"/>
+  {% if image %}
+  <image href="{{ image.href }}" x="{{ image.x }}" y="{{ image.y }}" width="{{ image.w }}" height="{{ image.h }}" preserveAspectRatio="xMidYMid meet"/>
+  <rect x="{{ image.x }}" y="{{ image.y }}" width="{{ image.w }}" height="{{ image.h }}" fill="none" stroke="#111111" stroke-width="2"/>
+  {% endif %}
+  {% for hl in headlines %}
+  {% if not loop.first %}<rect x="{{ w / 2 - 60 }}" y="{{ hl.rule_y }}" width="120" height="2" fill="#111111"/>{% endif %}
+  {% for line in hl.lines %}
+  <text x="{{ w / 2 }}" y="{{ line.y }}" text-anchor="middle" font-family="Old Standard TT" font-weight="bold" font-size="{{ hl.size }}" fill="#111111">{{ line.text }}</text>
+  {% endfor %}
+  {% endfor %}
+  <rect x="{{ m }}" y="{{ h - m - 14 }}" width="{{ w - 2 * m }}" height="2" fill="#111111"/>
+  <rect x="{{ m }}" y="{{ h - m - 6 }}" width="{{ w - 2 * m }}" height="6" fill="#111111"/>
+</svg>

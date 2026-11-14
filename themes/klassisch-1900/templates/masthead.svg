@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ w }}" height="{{ h }}" viewBox="0 0 {{ w }} {{ h }}">
+  <rect width="{{ w }}" height="{{ h }}" fill="#ffffff"/>
+  <text x="{{ w / 2 }}" y="{{ baseline }}" text-anchor="middle" font-family="UnifrakturMaguntia" font-size="{{ size }}" fill="#000000">{{ title }}</text>
+</svg>

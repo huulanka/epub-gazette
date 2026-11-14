@@ -1,0 +1,24 @@
+# Example: run epub-gazette next to n8n on the same Docker network.
+# No port is published – only containers on the network can reach it,
+# n8n calls http://epub-gazette:8080/v1/render.
+services:
+  epub-gazette:
+    image: ghcr.io/huulanka/epub-gazette:latest
+    container_name: epub-gazette
+    restart: unless-stopped
+    environment:
+      # Optional shared secret; n8n then sends "Authorization: Bearer <token>".
+      RENDER_TOKEN: ${RENDER_TOKEN:-}
+      RUST_LOG: info
+    networks: [n8n]
+    read_only: true
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+
+networks:
+  n8n:
+    external: true   # the network your n8n container is attached to

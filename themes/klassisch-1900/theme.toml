@@ -1,0 +1,8 @@
+# Metadata for the "Klassisch 1900" theme. The renderer embeds the theme at
+# compile time (see src/theme.rs); this file documents it for contributors.
+id = "klassisch-1900"
+name = "Klassisch 1900"
+description = "Fraktur masthead, Old Standard headlines, Libre Caslon body text, double rules and drop caps."
+masthead_font = "UnifrakturMaguntia"
+headline_font = "Old Standard TT"
+body_font = "Libre Caslon Text"

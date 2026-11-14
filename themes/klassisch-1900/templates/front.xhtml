@@ -1,0 +1,27 @@
+{% extends "base.xhtml" %}
+{% block title %}{{ labels.front_page }}{% endblock %}
+{% block body %}
+<section epub:type="frontmatter">
+<div class="mast"><img src="images/masthead.png" alt="{{ paper.title }}"/></div>
+<p class="dateline">{% if paper.volume_roman %}{{ labels.volume }} {{ paper.volume_roman }} · {% endif %}{{ labels.number }} {{ paper.number }} · {{ paper.date_long }}</p>
+{% if paper.motto %}<p class="motto">{{ paper.motto }}</p>{% endif %}
+{% if paper.front_image %}
+<div class="front-image">
+<img src="{{ paper.front_image.src }}" alt="{{ paper.front_image.alt }}"/>
+{% if paper.front_image.caption_line %}<p class="caption">{{ paper.front_image.caption_line }}</p>{% endif %}
+</div>
+{% endif %}
+{% if paper.weather or paper.almanac %}
+<div class="extras">
+{% if paper.weather %}<p><span class="label">{{ labels.weather }} {{ paper.weather.location }}</span> · {{ paper.weather.text }}</p>{% endif %}
+{% if paper.almanac %}<p><span class="label">{{ paper.almanac.heading }}</span> · {{ paper.almanac.text }}</p>{% endif %}
+</div>
+{% endif %}
+<h2 class="index">{{ labels.index }}</h2>
+<div class="toc">
+{% for e in paper.toc %}
+<p><a href="{{ e.href }}"><span class="toc-r">{{ e.section }}</span><span class="toc-t">{{ e.headline }}</span>{% if e.minutes %} <span class="toc-m">· {{ e.minutes }} {{ labels.minutes }}</span>{% endif %}</a></p>
+{% endfor %}
+</div>
+</section>
+{% endblock %}

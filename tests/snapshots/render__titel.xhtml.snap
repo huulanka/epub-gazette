@@ -1,0 +1,34 @@
+---
+source: tests/render.rs
+expression: "std::str::from_utf8(&files[\"OEBPS/titel.xhtml\"]).unwrap()"
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="de" lang="de">
+<head>
+<meta charset="UTF-8"/>
+<title>Titelseite</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+</head>
+<body>
+<section epub:type="frontmatter">
+<div class="mast"><img src="images/masthead.png" alt="The Ragazzi Observer"/></div>
+<p class="dateline">Jahrgang I · Nr. 1 · Samstag, 14. November 2026</p>
+<div class="front-image">
+<img src="images/titelbild.jpg" alt="Die Barboschi-Eisenbahnbrücke über den Sereth, Holzstich, 1883"/>
+<p class="caption">Die Barboschi-Eisenbahnbrücke über den Sereth, Holzstich, 1883 · Wikimedia Commons, gemeinfrei</p></div>
+<div class="extras">
+<p><span class="label">Wetter Hamburg</span> · Bedeckt, ab Mittag Schauer. 9° / 4°. Morgen freundlicher.</p><p><span class="label">Heute vor 137 Jahren</span> · brach die Reporterin Nellie Bly in New York zu ihrer Reise um die Welt auf. Sie brauchte 72 Tage.</p></div>
+<h2 class="index">Heute im Blatt</h2>
+<div class="toc">
+<p><a href="r-politik.xhtml#politik-1"><span class="toc-r">Politik &amp; Welt</span><span class="toc-t">Der Sanierungsstau wird zum Wahlkampfthema</span> <span class="toc-m">· 3 Min.</span></a></p>
+<p><a href="r-politik.xhtml#politik-2"><span class="toc-r">Politik &amp; Welt</span><span class="toc-t">Brüssel nimmt Online-Marktplätze stärker in die Pflicht</span> <span class="toc-m">· 2 Min.</span></a></p>
+<p><a href="r-wirtschaft.xhtml#wirtschaft-1"><span class="toc-r">Wirtschaft</span><span class="toc-t">Der Mittelstand investiert wieder, mit angezogener Handbremse</span> <span class="toc-m">· 2 Min.</span></a></p>
+<p><a href="r-tech.xhtml#tech-1"><span class="toc-r">Tech &amp; KI</span><span class="toc-t">KI wandert auf den eigenen Rechner</span> <span class="toc-m">· 3 Min.</span></a></p>
+<p><a href="r-wissen.xhtml#wissen-1"><span class="toc-r">Wissenschaft &amp; Gesundheit</span><span class="toc-t">Wie Darmbakterien mitentscheiden, ob ein Medikament wirkt</span> <span class="toc-m">· 2 Min.</span></a></p>
+<p><a href="r-medizin.xhtml#medizin-1"><span class="toc-r">Medizin &amp; Forschung</span><span class="toc-t">Gentherapie gegen Taubheit: Was die Studien zeigen</span> <span class="toc-m">· 3 Min.</span></a></p>
+<p><a href="schluss.xhtml"><span class="toc-r">Kurz notiert</span><span class="toc-t">Bahn · Energie · Software · Raumfahrt · Rohstoffe</span></a></p>
+</div>
+</section>
+</body>
+</html>

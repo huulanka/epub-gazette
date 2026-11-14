@@ -1,0 +1,4 @@
+/target
+*.epub
+*.snap.new
+.DS_Store
