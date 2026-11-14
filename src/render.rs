@@ -447,11 +447,13 @@ fn make_cover(
     }
     parts.push(format!("{} {}", labels.number, issue.number));
     parts.push(locale::date_long(issue.date, lang));
+    // Headlines, not teasers: they are written to be short and fit the two
+    // lines the cover allows per story; teasers got cut off mid-sentence.
     let headlines = issue
         .sections
         .iter()
         .flat_map(|s| s.articles.iter())
-        .map(|a| a.teaser.as_deref().unwrap_or(&a.headline))
+        .map(|a| a.headline.as_str())
         .collect();
     let input = CoverInput {
         title: &issue.title,
